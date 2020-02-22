@@ -1,3 +1,14 @@
+.todo-cont{
+    display: flex;
+    justify-content: space-between;
+    
+    }
+
 .todo-cell{
     background-color: aqua;
+    height:50px;
+    margin: 10px;
+    
 }
+
+
