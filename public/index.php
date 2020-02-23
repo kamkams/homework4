@@ -6,7 +6,7 @@ require_once "../src/class/Model.php";
 // die;
 require_once "../template/head.php";
 echo "<h1>My Todo list</h1><hr>";
-// require_once "../template/header.php";
+require_once "../template/header.php";
 
 // $controller = new Controller($model);
 $view = new View();
