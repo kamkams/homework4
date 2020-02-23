@@ -2,15 +2,23 @@
 
 class Model  {
     private $conn = null;
-    public function __construct($config)
+    private $view;
+
+
+    public function __construct($config, View $view)
 
 { 
+    $this->view  = $view;
 $servername = $config["servername"];
 $username = $config["username"];
 $password = $config["password"];
 $dbname = $config["dbname"];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
+
+
+
+
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -33,9 +41,19 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 $conn->close();
+
+
 }
-    public function getTasks ($userid = null ){
-        $stmt = $this->conn->prepare("SELECT*FROM  todolist");
-        $smtmt->execute();
-    }
+     public function getTasks($userid = null)
+     {
+        $stmt = $this->conn->prepare("SELECT*FROM todolist");   
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::fetch_assoc);
+        $allRows = $stmt->fetchAll();
+        $this->view->printTasks($allRows);
+        // var_dump($allRows);
+
+    }     
+    
+
 }
