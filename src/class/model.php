@@ -1,7 +1,7 @@
 <?php
 
 class Model  {
-    public $conn = null;
+    private $conn = null;
     public function __construct($config)
 
 { 
@@ -34,4 +34,8 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 }
+    public function getTasks ($userid = null ){
+        $stmt = $this->conn->prepare("SELECT*FROM  todolist");
+        $smtmt->execute();
+    }
 }
