@@ -5,7 +5,7 @@ class Model
     private $mytodo = null;
     private $view;
 
-    public function __construct($config, View $view)
+    public function __construct($config, View $view )
     {
         $this->view = $view;
         $servername = $config["servername"];
@@ -39,12 +39,12 @@ class Model
     }
     public function getTasks($userid = null)
     {
-        $stmt = $this->conn->prepare("SELECT*FROM todolist");
+        $stmt = $this->todo->prepare("SELECT*FROM todolist");
         $stmt->execute();
         $stmt->setFetchMode(PDO::fetch_assoc);
         $allRows = $stmt->fetchAll();
         $this->view->printTasks($allRows);
-        // var_dump($allRows);
+        var_dump($allRows);
 
     }
 
