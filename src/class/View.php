@@ -1,18 +1,15 @@
 <?php
+
 class View {
-
     public function render()
-{
+    {
+        require_once "../template/head.php";
+        require_once "../template/header.php";
+        require_once "../template/footer.php";
+    }
 
-}
-public function printTasks($tasks)
-{
-echo "<hr>Parbaudut View </br>";
-foreach ($tasks as $task) {   
-echo "<br> das ist AAAAAAAAAA";
-print_r($task);
-
-}
-
-}
+    public function printTasks($tasks)
+    {
+        echo "<hr>Print Tasks View</br>";
+    }
 }

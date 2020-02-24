@@ -1,5 +1,5 @@
 body{
-    background-color:green;
+    background-color:wheat;
 }
 
 .todo-cont{
@@ -9,7 +9,7 @@ body{
     }
 
 .todo-cell{
-    background-color: aqua;
+    background-color:royalblue;
     height:50px;
     margin: 10px;
     
