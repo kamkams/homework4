@@ -7,8 +7,6 @@ class View {
     //     require_once "../template/header.php";
     //     require_once "../template/footer.php";
     // }
-        var_dump();
-        die;
     public function printTasks($tasks)
     {
         echo "<hr>Print Tasks View</br>";
