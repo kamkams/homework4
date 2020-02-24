@@ -7,12 +7,6 @@ require_once "../public/add_task_form.php";
 $view = new View();
 $model = new Model($config, $view);
 
-
-
-
-
-
 // $controller = new Controller($model);
-
 
 // $model->getTasks();

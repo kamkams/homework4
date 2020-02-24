@@ -1,18 +1,14 @@
-body{
-    background-color:wheat;
+body {
+  background-color: wheat;
 }
 
-.todo-cont{
-    display: flex;
-    justify-content: space-between;
-    
-    }
-
-.todo-cell{
-    background-color:royalblue;
-    height:50px;
-    margin: 10px;
-    
+.todo-cont {
+  display: flex;
+  justify-content: space-between;
 }
 
-
+.todo-cell {
+  background-color: royalblue;
+  height: 50px;
+  margin: 10px;
+}
