@@ -7,9 +7,9 @@ class View {
         require_once "../template/head.php";
         require_once "../template/header.php";
         
-        echo "<hr>Print Tasks View</br>";
-        $sql = "SELECT*FROM todolist";
-        $result = $conn->query($sql);
+        // echo "<hr>Print Tasks View</br>";
+        // $sql = "SELECT*FROM todolist";
+        // $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {

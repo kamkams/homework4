@@ -19,18 +19,19 @@ class Model
             die("Connection failed: " . $conn->connect_error);
         }
         echo "Connected successfully";
+        
+
+    }
+    public function getTasks($userid = null)
+    {
+        $stmt = $this->cann->prepare("SELECT*FROM todolist");
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::fetch_assoc);
+        $allRows = $stmt->fetchAll();
+        $this->view->printTasks($allRows);
+        var_dump($allRows);
         $conn->close();
 
     }
-    // public function getTasks($userid = null)
-    // {
-    //     $stmt = $this->todo->prepare("SELECT*FROM todolist");
-    //     $stmt->execute();
-    //     $stmt->setFetchMode(PDO::fetch_assoc);
-    //     $allRows = $stmt->fetchAll();
-    //     $this->view->printTasks($allRows);
-    //     var_dump($allRows);
-
-    // }
 
 }
