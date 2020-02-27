@@ -2,58 +2,41 @@
 
 class Model  {
     private $conn = null;
-    private $view;
-
-
-    public function __construct($config, View $view)
-
-{ 
-    $this->view  = $view;
-$servername = $config["servername"];
-$username = $config["username"];
-$password = $config["password"];
-$dbname = $config["dbname"];
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-
-
-
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
-$sql = "SELECT*FROM todolist";
-$result = $conn->query($sql);
-
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "<div class='todo-cont'>";
-        echo "<span class='todo-cell'>id: " . $row["id"] . "</span>";
-        echo "<span class='todo-cell'>tasks: " . $row["tasks"] . "</span>";
-        echo "<span class='todo-cell'>created: " . $row["created"] . "</span>";
-        echo "<span class='todo-cell'>ptodo: " . $row["ptodo"] . "</span>";
-        echo "</div>";
+    public function __construct($config)
+    {
+        $this->config=$config;
     }
-} else {
-    echo "0 results";
-}
-$conn->close();
-
-
-}
-     public function getTasks($userid = null)
-     {
-        $stmt = $this->conn->prepare("SELECT*FROM todolist");   
+    public function getTodoList(){
+        $servername = $this->config["servername"];
+        $username = $this->config["username"];
+        $password = $this->config["password"];
+        $dbname = $this->config["dbname"];
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        
+        $stmt =$conn->prepare("SELECT*FROM todolist");   
         $stmt->execute();
-        $stmt->setFetchMode(PDO::fetch_assoc);
-        $allRows = $stmt->fetchAll();
-        $this->view->printTasks($allRows);
-        // var_dump($allRows);
-
-    }     
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+    public function createTodo($user_id, $task, $date){
+        $servername = $this->config["servername"];
+        $username = $this->config["username"];
+        $password = $this->config["password"];
+        $dbname = $this->config["dbname"];
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+       
     
+        // $stmt->execute(); 
+        // $model->createTodo(1, $_POST["my_text"]);
+        // $stmt->execute();
+        $user_id = 1;
+        $stmt =$conn->prepare("INSERT INTO  todolist SET `tasks` = :task , `ptodo` = :ptodo , `user_id` = :user_id");
+        $stmt->bindParam(':tasks', $_POST['my_text'],);
+        $stmt->bindParam(':ptodo', $_POST['pldatetime']);
+        $stmt->bindParam(':user_id',$user_id , \PDO::PARAM_INT);
+        $stmt->execute();
 
-}
+
+
+    }
+} 
