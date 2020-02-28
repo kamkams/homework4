@@ -35,9 +35,9 @@ class View {
                     echo "<span class='todo-cell'>ptodo: " . $row["ptodo"] . "</span>";
                     echo '<form action="delete.php" method="post">';
                     echo '<input type="hidden" name="taskid" value="' . $row["id"] .'"/>';
-                    echo "<button type='submit' name='delBtn'>Delete</button>";
+                    echo "<button type='submit' name='delBtn' class='delBtn'>Done</button>";
                     echo "</form>";
-                    // echo "<button type='submit' name='updateBtn' value= . '$row["id"] . >Update</button>";
+                    echo "<button type='submit' name='updateBtn' class='updateBtn'>Update</button>";
                     echo "</div>";
                 }
             } else {
