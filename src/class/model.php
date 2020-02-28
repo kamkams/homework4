@@ -31,9 +31,9 @@ class Model  {
         // $stmt->execute();
         $user_id = 1;
         $stmt =$conn->prepare("INSERT INTO  todolist SET `tasks` = :task , `ptodo` = :ptodo , `user_id` = :user_id");
-        $stmt->bindParam(':tasks', $_POST['my_text'],);
-        $stmt->bindParam(':ptodo', $_POST['pldatetime']);
-        $stmt->bindParam(':user_id',$user_id , \PDO::PARAM_INT);
+        $stmt->bindValue(':task', $_POST['my_text'],);
+        $stmt->bindValue(':ptodo', $_POST['pldatetime']);
+        $stmt->bindValue(':user_id',$user_id , \PDO::PARAM_INT);
         $stmt->execute();
 
 
