@@ -14,5 +14,11 @@ body{
     margin: 10px;
     
 }
+h1{
+    text-align: center;
+}
 
+#textinput{
+    height: 30px;
+}
 
